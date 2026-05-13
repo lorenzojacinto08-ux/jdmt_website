@@ -37,12 +37,16 @@ def contact():
         """
         
         sg = SendGridAPIClient(sendgrid_api_key)
+        
+        # Use recipient email as sender (must be verified in SendGrid)
+        # Include customer email in reply_to and message body
         mail = Mail(
-            from_email=email,
+            from_email=recipient_email,
             to_emails=recipient_email,
             subject=f'New Contact from {name} - {project}',
             html_content=message_content.replace('\n', '<br>')
         )
+        mail.reply_to = email
         
         response = sg.send(mail)
         
