@@ -101,6 +101,20 @@ if (revealEls.length) {
 }
 
 /* =========================
+   TEAM SLIDER
+========================= */
+function scrollTeam(direction) {
+    const teamScroll = document.getElementById("teamScroll");
+    if (!teamScroll) return;
+
+    const scrollAmount = 300; // Adjust based on card width + gap
+    teamScroll.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth",
+    });
+}
+
+/* =========================
    CONTACT FORM
 ========================= */
 const contactForm = document.getElementById("contactForm");
